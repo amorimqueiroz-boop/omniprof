@@ -1,4 +1,6 @@
 streamlit>=1.28
+streamlit-option-menu
+tzdata
 openai
 google-genai
 anthropic
@@ -9,6 +11,7 @@ fpdf
 Pillow
 streamlit-cropper
 requests
+supabase
 pandas
 plotly
 graphviz

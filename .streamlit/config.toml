@@ -5,8 +5,10 @@
 gatherUsageStats = false
 
 [client]
-showErrorDetails = false
+showErrorDetails = true
 toolbarMode = "minimal"
 
 [server]
 maxUploadSize = 200
+enableCORS = false
+enableWebsocketCompression = false

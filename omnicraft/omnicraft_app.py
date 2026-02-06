@@ -17,7 +17,12 @@ _icon_path = OMNICRAFT_DIR / "omni_icone.png"
 
 import streamlit as st
 from datetime import datetime
-from zoneinfo import ZoneInfo
+
+try:
+    from zoneinfo import ZoneInfo
+    _TZ = ZoneInfo("America/Sao_Paulo")
+except Exception:
+    _TZ = None
 
 from omnicraft.config import get_setting
 from omnicraft.constantes import SEGMENTOS
@@ -66,7 +71,7 @@ with col_comp:
     if comp_sel != st.session_state.get("omnicraft_componente"):
         st.session_state.omnicraft_componente = comp_sel or ""
 
-agora = datetime.now(ZoneInfo("America/Sao_Paulo"))
+agora = datetime.now(_TZ) if _TZ else datetime.now()
 saudacao = "Bom dia" if 5 <= agora.hour < 12 else "Boa tarde" if 12 <= agora.hour < 18 else "Boa noite"
 nome = st.session_state.get("omnicraft_usuario_nome", "Professor(a)").split()[0]
 hero_html = f'<div class="omni-hero"><h1>{saudacao}, {nome}!</h1><p>Crie materiais didáticos de forma inteligente. Sem PEI, sem vínculo com estudante — só você e as ferramentas.</p></div>'

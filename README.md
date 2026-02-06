@@ -28,11 +28,13 @@ streamlit run omnicraft_app.py
 ## Configuração
 
 1. Copie `.streamlit/secrets.toml.example` para `.streamlit/secrets.toml`
-2. Preencha as chaves de API (DeepSeek, Gemini, OpenAI, etc.)
+2. Crie um projeto Supabase separado (ver `supabase/README.md`)
+3. Preencha SUPABASE_URL e SUPABASE_ANON_KEY
+4. Preencha as chaves de API (DeepSeek, Gemini, OpenAI, etc.)
 
 ## Streamlit Cloud
 
-- **Main file path:** `omniprof_run.py`
+- **Main file path:** `omnicraft/omnicraft_app.py` *(não use omniprof_run.py — ele spawna subprocess e conflita com o Cloud)*
 - Adicione as chaves em Secrets (Settings → Secrets)
 
 ## Estrutura
