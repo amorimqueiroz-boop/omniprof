@@ -66,4 +66,4 @@ if st.session_state.get("papo_result"):
         st.rerun()
 
 if st.button("🏠 Voltar ao Início"):
-    st.switch_page("omnicraft_app.py")
+    st.switch_page("streamlit_app.py")
