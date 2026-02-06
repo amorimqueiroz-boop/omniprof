@@ -1,8 +1,8 @@
-# omnicraft_app.py — Ponto de entrada Omniprof (Home inline, sem redirect)
+#!/usr/bin/env python3
 """
-Omniprof: ferramentas para professores. Independente do Omnisfera.
+Omniprof — Home. Main file na raiz para Streamlit Cloud.
+Estrutura padrão: streamlit_app.py + pages/ na raiz.
 """
-
 import traceback
 import streamlit as st
 
@@ -19,12 +19,11 @@ try:
     from pathlib import Path
     from datetime import datetime
 
-    OMNICRAFT_DIR = Path(__file__).resolve().parent
-    ROOT = OMNICRAFT_DIR.parent
+    ROOT = Path(__file__).resolve().parent
     if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
 
-    _icon_path = OMNICRAFT_DIR / "omni_icone.png"
+    _icon_path = ROOT / "omni_icone.png"
 
     try:
         from zoneinfo import ZoneInfo

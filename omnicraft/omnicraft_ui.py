@@ -43,7 +43,7 @@ def inject_omnicraft_css():
 
 
 def create_tool_card(title: str, desc: str, icon: str, color: str, page: str, key: str):
-    """Card de ferramenta com botão de acesso."""
+    """Card de ferramenta com link de acesso (st.page_link mais confiável no Cloud)."""
     bar_cls = "cherry" if color == "cherry" else "blue"
     icon_cls = "omni-card-icon cherry" if color == "cherry" else "omni-card-icon"
     html = f'<div class="omni-card"><div class="omni-card-content"><div class="omni-card-bar {bar_cls}"></div><div class="{icon_cls}"><i class="{icon}"></i></div><div class="omni-card-text"><div class="omni-card-title">{title}</div><div class="omni-card-desc">{desc}</div></div></div></div>'
@@ -51,8 +51,11 @@ def create_tool_card(title: str, desc: str, icon: str, color: str, page: str, ke
         st.html(html)
     else:
         st.markdown(html, unsafe_allow_html=True)
-    if st.button(f"📂 Acessar {title}", key=key, use_container_width=True):
-        st.switch_page(page)
+    if hasattr(st, "page_link"):
+        st.page_link(page, label=f"📂 Acessar {title}", icon="📂", width="stretch")
+    else:
+        if st.button(f"📂 Acessar {title}", key=key, use_container_width=True):
+            st.switch_page(page)
 
 
 def render_omnicraft_header():
@@ -61,8 +64,9 @@ def render_omnicraft_header():
 
 
 # Menus por segmento — refletem os cards da Home. Labels curtos para não quebrar linha.
+# Paths relativos ao main script (streamlit_app.py na raiz)
 TOOLS_EF_EM = [
-    ("Início", "house", "omnicraft_app.py"),
+    ("Início", "house", "streamlit_app.py"),
     ("Criar Itens", "pencil-square", "pages/1_Criar_do_Zero.py"),
     ("Estúdio Visual", "image", "pages/2_Estudio_Visual.py"),
     ("Papo de Mestre", "chat-dots", "pages/3_Papo_de_Mestre.py"),
@@ -73,7 +77,7 @@ TOOLS_EF_EM = [
     ("Adaptar Atividade", "scissors", "pages/8_Adaptar_Atividade.py"),
 ]
 TOOLS_EI = [
-    ("Início", "house", "omnicraft_app.py"),
+    ("Início", "house", "streamlit_app.py"),
     ("Criar Experiência", "lightbulb", "pages/1_Criar_do_Zero.py"),
     ("Estúdio Visual", "image", "pages/2_Estudio_Visual.py"),
     ("Rotina & AVD", "time", "pages/9_Rotina.py"),

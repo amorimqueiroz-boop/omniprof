@@ -34,7 +34,7 @@ streamlit run omnicraft_app.py
 
 ## Streamlit Cloud
 
-- **Main file path:** `omnicraft/omnicraft_app.py` *(não use omniprof_run.py — ele spawna subprocess e conflita com o Cloud)*
+- **Main file path:** `streamlit_app.py` (na raiz)
 - Adicione as chaves em Secrets (Settings → Secrets)
 
 ## Estrutura

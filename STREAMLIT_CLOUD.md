@@ -2,7 +2,9 @@
 
 ## Main file path
 
-Use **`omnicraft/omnicraft_app.py`** — não use `omniprof_run.py`.
+**`streamlit_app.py`** (na raiz do repositório)
+
+Estrutura padrão: main + pages/ na raiz — Streamlit Cloud resolve corretamente.
 
 O `omniprof_run.py` faz subprocess e causa conflito no Streamlit Cloud (dois processos na mesma porta).
 
@@ -23,5 +25,5 @@ GEMINI_API_KEY = "..."
 ## Se ainda carregar sem abrir
 
 1. Verifique os **logs** em Manage app → Logs
-2. Confirme que **Main file path** = `omnicraft/omnicraft_app.py`
+2. Confirme que **Main file path** = `streamlit_app.py` (na raiz — NÃO use omnicraft/omnicraft_app.py)
 3. Confirme que todas as dependências estão em `requirements.txt` (incluindo `streamlit-option-menu`)
