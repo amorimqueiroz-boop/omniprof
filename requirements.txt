@@ -1,0 +1,14 @@
+streamlit>=1.28
+openai
+google-genai
+anthropic
+python-docx
+python-pptx
+pypdf
+fpdf
+Pillow
+streamlit-cropper
+requests
+pandas
+plotly
+graphviz
